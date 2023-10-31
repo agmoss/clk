@@ -27,7 +27,7 @@ class ClockPainter extends CustomPainter {
     _drawCircle(canvas, center, radius);
     _drawTicks(canvas, center, radius);
     _drawHands(canvas, center, radius);
-    _drawSmallCircle(canvas, center, 8);
+    _drawSmallCircle(canvas, center, radius);
   }
 
   void _drawCircle(Canvas canvas, Offset center, double radius) {
@@ -39,23 +39,26 @@ class ClockPainter extends CustomPainter {
   }
 
   void _drawSmallCircle(Canvas canvas, Offset center, double radius) {
+    double smallCircleRadius = radius * 0.03;
     final paintCenterCircle = Paint()
       ..color = markerColor
       ..isAntiAlias = true;
 
-    canvas.drawCircle(center, radius, paintCenterCircle);
+    canvas.drawCircle(center, smallCircleRadius, paintCenterCircle);
   }
 
   void _drawTicks(Canvas canvas, Offset center, double radius) {
+    double markerWidth = radius * 0.05;
+    double markerLength = radius * 0.1;
     final paintTick = Paint()
       ..color = markerColor
-      ..strokeWidth = 6
+      ..strokeWidth = markerWidth
       ..isAntiAlias = true;
 
     for (int i = 0; i < 12; i++) {
       final double tickDegree = i * 30;
       final tickPosition =
-          _clockMath.handPosition(tickDegree, radius - 10, center);
+          _clockMath.handPosition(tickDegree, radius - markerLength, center);
       canvas.drawLine(tickPosition,
           _clockMath.handPosition(tickDegree, radius, center), paintTick);
     }
@@ -64,11 +67,16 @@ class ClockPainter extends CustomPainter {
   void _drawHands(Canvas canvas, Offset center, double radius) {
     final DateTime now = DateTime.now();
 
-    _drawHand(canvas, center, 'hour', hourHandColor, 8.0, radius * 0.6, now);
-    _drawHand(
-        canvas, center, 'minute', minuteHandColor, 5.0, radius * 0.9, now);
-    _drawHand(
-        canvas, center, 'second', secondHandColor, 3.0, radius * 0.95, now);
+    double hourHandWidth = radius * 0.03;
+    double minuteHandWidth = radius * 0.02;
+    double secondHandWidth = radius * 0.01;
+
+    _drawHand(canvas, center, 'hour', hourHandColor, hourHandWidth,
+        radius * 0.6, now);
+    _drawHand(canvas, center, 'minute', minuteHandColor, minuteHandWidth,
+        radius * 0.95, now);
+    _drawHand(canvas, center, 'second', secondHandColor, secondHandWidth,
+        radius * 0.99, now);
   }
 
   void _drawHand(Canvas canvas, Offset center, String handType, Color color,
