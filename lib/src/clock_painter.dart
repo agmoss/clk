@@ -26,7 +26,7 @@ class ClockPainter extends CustomPainter {
 
     _drawCircle(canvas, center, radius);
     _drawTicks(canvas, center, radius);
-    _drawHands(canvas, center, size);
+    _drawHands(canvas, center, radius);
     _drawSmallCircle(canvas, center, 8);
   }
 
@@ -61,15 +61,14 @@ class ClockPainter extends CustomPainter {
     }
   }
 
-  void _drawHands(Canvas canvas, Offset center, Size size) {
+  void _drawHands(Canvas canvas, Offset center, double radius) {
     final DateTime now = DateTime.now();
 
+    _drawHand(canvas, center, 'hour', hourHandColor, 8.0, radius * 0.6, now);
     _drawHand(
-        canvas, center, 'hour', hourHandColor, 8.0, size.width * 0.3, now);
+        canvas, center, 'minute', minuteHandColor, 5.0, radius * 0.9, now);
     _drawHand(
-        canvas, center, 'minute', minuteHandColor, 5.0, size.width * 0.4, now);
-    _drawHand(
-        canvas, center, 'second', secondHandColor, 3.0, size.width * 0.45, now);
+        canvas, center, 'second', secondHandColor, 3.0, radius * 0.95, now);
   }
 
   void _drawHand(Canvas canvas, Offset center, String handType, Color color,
