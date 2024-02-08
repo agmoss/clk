@@ -6,18 +6,16 @@ import 'package:provider/provider.dart';
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => ThemeModel(),
-      child: Consumer<ThemeModel>(
-        builder: (context, theme, child) => MaterialApp(
-          title: 'clk',
-          restorationScopeId: 'app',
-          debugShowCheckedModeBanner: false,
-          theme: theme.currentTheme,
-          home: const Clock(),
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+        create: (context) => ThemeModel(),
+        child: Consumer<ThemeModel>(
+          builder: (context, theme, child) => MaterialApp(
+            title: 'clk',
+            restorationScopeId: 'app',
+            debugShowCheckedModeBanner: false,
+            theme: theme.currentTheme,
+            home: const Clock(),
+          ),
         ),
-      ),
-    );
-  }
+      );
 }

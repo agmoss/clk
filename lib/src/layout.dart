@@ -11,21 +11,24 @@ class Layout extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
-        resizeToAvoidBottomInset: true,
-        appBar: AppBar(
-          actions: <Widget>[
-            IconButton(
-              color: Theme.of(context).colorScheme.error,
-              icon: const Icon(Icons.light_mode),
-              onPressed: () {
-                Provider.of<ThemeModel>(context, listen: false).toggleTheme();
-              },
-            ),
-          ],
-        ),
-        body: SafeArea(child: Center(child: content)));
-  }
+  Widget build(BuildContext context) => Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
+      resizeToAvoidBottomInset: true,
+      appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+            color: Theme.of(context).colorScheme.error,
+            icon: const Icon(Icons.light_mode),
+            onPressed: () {
+              Provider.of<ThemeModel>(context, listen: false).toggleTheme();
+            },
+          ),
+        ],
+      ),
+      body: SafeArea(
+          child: Center(
+              child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: content,
+      ))));
 }

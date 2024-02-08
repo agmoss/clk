@@ -8,14 +8,15 @@ class ClockPainter extends CustomPainter {
   final Color secondHandColor;
   final Color dialColor;
   final Color markerColor;
+  final Color gmtHandColor;
 
-  ClockPainter({
-    required this.hourHandColor,
-    required this.minuteHandColor,
-    required this.secondHandColor,
-    required this.dialColor,
-    required this.markerColor,
-  });
+  ClockPainter(
+      {required this.hourHandColor,
+      required this.minuteHandColor,
+      required this.secondHandColor,
+      required this.dialColor,
+      required this.markerColor,
+      required this.gmtHandColor});
 
   final ClockMath _clockMath = ClockMath();
 
@@ -57,6 +58,12 @@ class ClockPainter extends CustomPainter {
 
     for (int i = 0; i < 12; i++) {
       final double tickDegree = i * 30;
+      if (i == 3) {
+        _drawDateWindow(canvas,
+            _clockMath.handPosition(tickDegree, radius - markerLength, center));
+        continue;
+      }
+
       final tickPosition =
           _clockMath.handPosition(tickDegree, radius - markerLength, center);
       canvas.drawLine(tickPosition,
@@ -70,13 +77,15 @@ class ClockPainter extends CustomPainter {
     double hourHandWidth = radius * 0.03;
     double minuteHandWidth = radius * 0.02;
     double secondHandWidth = radius * 0.01;
-
+    double gmtHandWidth = radius * 0.04;
     _drawHand(canvas, center, 'hour', hourHandColor, hourHandWidth,
         radius * 0.6, now);
     _drawHand(canvas, center, 'minute', minuteHandColor, minuteHandWidth,
         radius * 0.95, now);
     _drawHand(canvas, center, 'second', secondHandColor, secondHandWidth,
         radius * 0.99, now);
+    _drawHand(
+        canvas, center, 'gmt', gmtHandColor, gmtHandWidth, radius * 0.7, now);
   }
 
   void _drawHand(Canvas canvas, Offset center, String handType, Color color,
@@ -97,8 +106,27 @@ class ClockPainter extends CustomPainter {
     canvas.drawPath(handPath, paintHand);
   }
 
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return true;
+  void _drawDateWindow(Canvas canvas, Offset position) {
+    final DateTime now = DateTime.now();
+    final String dayOfMonth = now.day.toString();
+
+    final textStyle = TextStyle(
+      color: markerColor,
+      fontSize: 32,
+    );
+    final textSpan = TextSpan(
+      text: dayOfMonth,
+      style: textStyle,
+    );
+    final textPainter = TextPainter(
+      text: textSpan,
+      textDirection: TextDirection.ltr,
+    );
+
+    textPainter.layout();
+    textPainter.paint(canvas, position);
   }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
 }

@@ -29,20 +29,19 @@ class _ClockState extends State<Clock> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Layout(
-        content: SizedBox(
-      width: double.maxFinite,
-      height: double.maxFinite,
-      child: CustomPaint(
-        painter: ClockPainter(
-          hourHandColor: Theme.of(context).colorScheme.primary,
-          minuteHandColor: Theme.of(context).colorScheme.secondary,
-          secondHandColor: Theme.of(context).colorScheme.tertiary,
-          dialColor: Theme.of(context).colorScheme.surface,
-          markerColor: Theme.of(context).colorScheme.outline,
+  Widget build(BuildContext context) => Layout(
+          content: SizedBox(
+        width: double.maxFinite,
+        height: double.maxFinite,
+        child: CustomPaint(
+          painter: ClockPainter(
+            hourHandColor: Theme.of(context).colorScheme.primary,
+            minuteHandColor: Theme.of(context).colorScheme.secondary,
+            secondHandColor: Theme.of(context).colorScheme.tertiary,
+            dialColor: Theme.of(context).colorScheme.surface,
+            markerColor: Theme.of(context).colorScheme.outline,
+            gmtHandColor: Theme.of(context).colorScheme.error,
+          ),
         ),
-      ),
-    ));
-  }
+      ));
 }
