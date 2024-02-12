@@ -1,5 +1,6 @@
 import 'package:clk/src/theme_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
 
 class Layout extends StatelessWidget {
@@ -28,7 +29,7 @@ class Layout extends StatelessWidget {
       body: SafeArea(
           child: Center(
               child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.fromLTRB(2.h, 2.w,  2.h,  2.w),
         child: content,
       ))));
 }

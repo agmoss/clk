@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
 import 'clock_math.dart';
 
 class ClockPainter extends CustomPainter {
@@ -78,14 +79,20 @@ class ClockPainter extends CustomPainter {
     double minuteHandWidth = radius * 0.02;
     double secondHandWidth = radius * 0.01;
     double gmtHandWidth = radius * 0.04;
+
+    double hourHandLength = radius * 0.6;
+    double minuteHandLength = radius * 0.95;
+    double secondHandLength = radius * 0.99;
+    double gmtHandLength = radius * 0.7;
+
     _drawHand(canvas, center, 'hour', hourHandColor, hourHandWidth,
-        radius * 0.6, now);
+        hourHandLength, now);
     _drawHand(canvas, center, 'minute', minuteHandColor, minuteHandWidth,
-        radius * 0.95, now);
+        minuteHandLength, now);
     _drawHand(canvas, center, 'second', secondHandColor, secondHandWidth,
-        radius * 0.99, now);
+        secondHandLength, now);
     _drawHand(
-        canvas, center, 'gmt', gmtHandColor, gmtHandWidth, radius * 0.7, now);
+        canvas, center, 'gmt', gmtHandColor, gmtHandWidth, gmtHandLength, now);
   }
 
   void _drawHand(Canvas canvas, Offset center, String handType, Color color,
@@ -107,20 +114,16 @@ class ClockPainter extends CustomPainter {
   }
 
   void _drawDateWindow(Canvas canvas, Offset position) {
-    final DateTime now = DateTime.now();
-    final String dayOfMonth = now.day.toString();
-
-    final textStyle = TextStyle(
-      color: markerColor,
-      fontSize: 32,
-    );
-    final textSpan = TextSpan(
-      text: dayOfMonth,
-      style: textStyle,
-    );
     final textPainter = TextPainter(
-      text: textSpan,
+      text: TextSpan(
+        text: DateTime.now().day.toString(),
+        style: TextStyle(
+          color: markerColor,
+          fontSize: 16.dp,
+        ),
+      ),
       textDirection: TextDirection.ltr,
+      textAlign: TextAlign.center,
     );
 
     textPainter.layout();
