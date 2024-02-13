@@ -9,8 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_colorpicker: ^1.0.3
   flutter_sizer: ^1.0.5
   provider: ^6.0.5
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:

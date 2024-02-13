@@ -1,5 +1,6 @@
-import 'package:clk/src/clock.dart';
-import 'package:clk/src/theme_model.dart';
+import 'package:clk/src/routes/routes.dart';
+import 'package:clk/src/theme/theme_model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +17,8 @@ class App extends StatelessWidget {
                     restorationScopeId: 'app',
                     debugShowCheckedModeBanner: false,
                     theme: theme.currentTheme,
-                    home: const Clock(),
+                    initialRoute: Routes.clock,
+                    onGenerateRoute: RouterGenerator.generateRoutes,
                   )),
         ),
       );
