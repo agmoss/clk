@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "788765359485",
+    "project_id": "clk-de7ae",
+    "storage_bucket": "clk-de7ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788765359485:android:d5a088a96d8714c1ce6014",
+        "android_client_info": {
+          "package_name": "com.example.clk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCit_juZrY3o-dR9YHYqSXEsx8O0yWTbjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

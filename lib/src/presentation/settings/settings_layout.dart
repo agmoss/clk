@@ -15,6 +15,7 @@ class SettingLayout extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.background,
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.background,
         leading: IconButton(
           color: Theme.of(context).colorScheme.altColor,
           icon: const Icon(Icons.arrow_back),

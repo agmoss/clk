@@ -13,18 +13,14 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  late Color _tempHourHandColor;
-  late Color _tempMinuteHandColor;
-  late Color _tempSecondHandColor;
+  late Color _tempGmtHandColor;
   late Color _tempLumeColor;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     final themeModel = Provider.of<ThemeModel>(context, listen: false);
-    _tempHourHandColor = themeModel.hourHandColor;
-    _tempMinuteHandColor = themeModel.minuteHandColor;
-    _tempSecondHandColor = themeModel.secondHandColor;
+    _tempGmtHandColor = themeModel.gmtHandColor;
     _tempLumeColor = themeModel.lumeColor;
   }
 
@@ -66,27 +62,11 @@ class _SettingsState extends State<Settings> {
           ]
         : [
             ListTile(
-              title: const Text('Hour Hand Color'),
-              trailing: Icon(Icons.circle, color: _tempHourHandColor),
-              onTap: () => _showColorPicker(_tempHourHandColor, (color) {
-                setState(() => _tempHourHandColor = color);
-                themeModel.setHourHandColor(color);
-              }),
-            ),
-            ListTile(
-              title: const Text('Minute Hand Color'),
-              trailing: Icon(Icons.circle, color: _tempMinuteHandColor),
-              onTap: () => _showColorPicker(_tempMinuteHandColor, (color) {
-                setState(() => _tempMinuteHandColor = color);
-                themeModel.setMinuteHandColor(color);
-              }),
-            ),
-            ListTile(
-              title: const Text('Second Hand Color'),
-              trailing: Icon(Icons.circle, color: _tempSecondHandColor),
-              onTap: () => _showColorPicker(_tempSecondHandColor, (color) {
-                setState(() => _tempSecondHandColor = color);
-                themeModel.setSecondHandColor(color);
+              title: const Text('GMT Hand Color'),
+              trailing: Icon(Icons.circle, color: _tempGmtHandColor),
+              onTap: () => _showColorPicker(_tempGmtHandColor, (color) {
+                setState(() => _tempGmtHandColor = color);
+                themeModel.setGmtHandColor(color);
               }),
             )
           ];

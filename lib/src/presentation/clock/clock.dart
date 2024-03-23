@@ -36,9 +36,7 @@ class _ClockState extends State<Clock> {
         height: double.maxFinite,
         child: CustomPaint(
           painter: ClockPainter(
-            hourHandColor: Theme.of(context).colorScheme.getHourHandColor,
-            minuteHandColor: Theme.of(context).colorScheme.getMinuteHandColor,
-            secondHandColor: Theme.of(context).colorScheme.getSecondHandColor,
+            handColor: Theme.of(context).colorScheme.getHandColor,
             dialColor: Theme.of(context).colorScheme.getDialColor,
             markerColor: Theme.of(context).colorScheme.getMarkerColor,
             gmtHandColor: Theme.of(context).colorScheme.getGmtHandColor,

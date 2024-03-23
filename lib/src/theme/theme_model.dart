@@ -6,10 +6,7 @@ import 'theme.dart';
 
 class ThemeModel extends ChangeNotifier {
   ThemeData get currentTheme => _currentTheme;
-
-  Color get hourHandColor => _currentTheme.colorScheme.getHourHandColor;
-  Color get minuteHandColor => _currentTheme.colorScheme.getMinuteHandColor;
-  Color get secondHandColor => _currentTheme.colorScheme.getSecondHandColor;
+  Color get gmtHandColor => _currentTheme.colorScheme.getGmtHandColor;
   Color get lumeColor => _currentTheme.colorScheme.getLumeColor;
 
   late ThemeData _currentTheme;
@@ -60,22 +57,10 @@ class ThemeModel extends ChangeNotifier {
     }
   }
 
-  void setHourHandColor(Color color) {
-    setColor(color,
-        lightPrefKey: 'lightPrimary',
-        copyWithColor: (scheme, color) => scheme.setHourHandColor(color));
-  }
-
-  void setMinuteHandColor(Color color) {
+  void setGmtHandColor(Color color) {
     setColor(color,
         lightPrefKey: 'lightSecondary',
-        copyWithColor: (scheme, color) => scheme.setMinuteHandColor(color));
-  }
-
-  void setSecondHandColor(Color color) {
-    setColor(color,
-        lightPrefKey: 'lightTertiary',
-        copyWithColor: (scheme, color) => scheme.setSecondHandColor(color));
+        copyWithColor: (scheme, color) => scheme.setGmtHandColor(color));
   }
 
   void setLume(Color color) {

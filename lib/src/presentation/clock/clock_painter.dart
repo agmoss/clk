@@ -4,17 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 
 class ClockPainter extends CustomPainter {
-  final Color hourHandColor;
-  final Color minuteHandColor;
-  final Color secondHandColor;
+  final Color handColor;
+
   final Color dialColor;
   final Color markerColor;
   final Color gmtHandColor;
 
   ClockPainter(
-      {required this.hourHandColor,
-      required this.minuteHandColor,
-      required this.secondHandColor,
+      {required this.handColor,
       required this.dialColor,
       required this.markerColor,
       required this.gmtHandColor});
@@ -51,7 +48,8 @@ class ClockPainter extends CustomPainter {
 
   void _drawTicks(Canvas canvas, Offset center, double radius) {
     double markerWidth = radius * 0.05;
-    double markerLength = radius * 0.1;
+    double markerWidth2 = radius * 0.15;
+    double markerWidth3 = radius * 0.11;
     final paintTick = Paint()
       ..color = markerColor
       ..strokeWidth = markerWidth
@@ -59,16 +57,28 @@ class ClockPainter extends CustomPainter {
 
     for (int i = 0; i < 12; i++) {
       final double tickDegree = i * 30;
+
+      // Determine the tick position
+      final tickPosition =
+          _clockMath.handPosition(tickDegree, radius - markerWidth, center);
+
+      final tickPosition2 =
+          _clockMath.handPosition(tickDegree, radius - markerWidth2, center);
+
+      final tickPosition3 =
+          _clockMath.handPosition(tickDegree, radius - markerWidth3, center);
+
       if (i == 3) {
-        _drawDateWindow(canvas,
-            _clockMath.handPosition(tickDegree, radius - markerLength, center));
+        _drawDateWindow(canvas, tickPosition2);
         continue;
       }
-
-      final tickPosition =
-          _clockMath.handPosition(tickDegree, radius - markerLength, center);
-      canvas.drawLine(tickPosition,
-          _clockMath.handPosition(tickDegree, radius, center), paintTick);
+      if (i % 3 == 0) {
+        canvas.drawLine(tickPosition, tickPosition2, paintTick);
+      } else {
+        // Draw circle ticks for other positions
+        canvas.drawCircle(tickPosition3, markerWidth * 0.7,
+            paintTick); // Adjust the circle's radius as needed
+      }
     }
   }
 
@@ -85,11 +95,11 @@ class ClockPainter extends CustomPainter {
     double secondHandLength = radius * 0.99;
     double gmtHandLength = radius * 0.7;
 
-    _drawHand(canvas, center, HandType.hour, hourHandColor, hourHandWidth,
+    _drawHand(canvas, center, HandType.hour, handColor, hourHandWidth,
         hourHandLength, now);
-    _drawHand(canvas, center, HandType.minute, minuteHandColor, minuteHandWidth,
+    _drawHand(canvas, center, HandType.minute, handColor, minuteHandWidth,
         minuteHandLength, now);
-    _drawHand(canvas, center, HandType.second, secondHandColor, secondHandWidth,
+    _drawHand(canvas, center, HandType.second, handColor, secondHandWidth,
         secondHandLength, now);
     _drawHand(canvas, center, HandType.gmt, gmtHandColor, gmtHandWidth,
         gmtHandLength, now);

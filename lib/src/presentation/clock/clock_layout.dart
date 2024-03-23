@@ -19,6 +19,7 @@ class ClockLayout extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.background,
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.background,
         leading: null,
         automaticallyImplyLeading: false,
         actions: <Widget>[
