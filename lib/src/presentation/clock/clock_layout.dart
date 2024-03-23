@@ -1,10 +1,14 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:provider/provider.dart';
+
+// Project imports:
 import 'package:clk/src/routes/routes.dart';
 import 'package:clk/src/theme/theme.dart';
 import 'package:clk/src/theme/theme_model.dart';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:provider/provider.dart';
 
 class ClockLayout extends StatelessWidget {
   final Widget content;

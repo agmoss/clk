@@ -1,9 +1,13 @@
+// Dart imports:
 import 'dart:async';
-import 'package:clk/src/theme/theme.dart';
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
-import 'clock_painter.dart';
+// Project imports:
+import 'package:clk/src/theme/theme.dart';
 import 'clock_layout.dart';
+import 'clock_painter.dart';
 
 class Clock extends StatefulWidget {
   const Clock({super.key});

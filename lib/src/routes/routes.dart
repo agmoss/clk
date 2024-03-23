@@ -1,6 +1,9 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:clk/src/presentation/clock/clock.dart';
 import 'package:clk/src/presentation/settings/settings.dart';
-import 'package:flutter/material.dart';
 
 class Routes {
   static const clock = '/clock';

@@ -1,7 +1,14 @@
+// Dart imports:
 import 'dart:math';
-import 'package:clk/src/math/clock_math.dart';
+
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_sizer/flutter_sizer.dart';
+
+// Project imports:
+import 'package:clk/src/math/clock_math.dart';
 
 class ClockPainter extends CustomPainter {
   final Color handColor;
@@ -38,7 +45,7 @@ class ClockPainter extends CustomPainter {
   }
 
   void _drawSmallCircle(Canvas canvas, Offset center, double radius) {
-    double smallCircleRadius = radius * 0.03;
+    final double smallCircleRadius = radius * 0.03;
     final paintCenterCircle = Paint()
       ..color = markerColor
       ..isAntiAlias = true;
@@ -47,9 +54,9 @@ class ClockPainter extends CustomPainter {
   }
 
   void _drawTicks(Canvas canvas, Offset center, double radius) {
-    double markerWidth = radius * 0.05;
-    double markerWidth2 = radius * 0.15;
-    double markerWidth3 = radius * 0.11;
+    final double markerWidth = radius * 0.05;
+    final double markerWidth2 = radius * 0.15;
+    final double markerWidth3 = radius * 0.11;
     final paintTick = Paint()
       ..color = markerColor
       ..strokeWidth = markerWidth
@@ -85,15 +92,15 @@ class ClockPainter extends CustomPainter {
   void _drawHands(Canvas canvas, Offset center, double radius) {
     final DateTime now = DateTime.now();
 
-    double hourHandWidth = radius * 0.03;
-    double minuteHandWidth = radius * 0.02;
-    double secondHandWidth = radius * 0.01;
-    double gmtHandWidth = radius * 0.04;
+    final double hourHandWidth = radius * 0.03;
+    final double minuteHandWidth = radius * 0.02;
+    final double secondHandWidth = radius * 0.01;
+    final double gmtHandWidth = radius * 0.04;
 
-    double hourHandLength = radius * 0.6;
-    double minuteHandLength = radius * 0.95;
-    double secondHandLength = radius * 0.99;
-    double gmtHandLength = radius * 0.7;
+    final double hourHandLength = radius * 0.6;
+    final double minuteHandLength = radius * 0.95;
+    final double secondHandLength = radius * 0.99;
+    final double gmtHandLength = radius * 0.7;
 
     _drawHand(canvas, center, HandType.hour, handColor, hourHandWidth,
         hourHandLength, now);
@@ -136,7 +143,9 @@ class ClockPainter extends CustomPainter {
       textAlign: TextAlign.center,
     );
 
+    // ignore: cascade_invocations
     textPainter.layout();
+    // ignore: cascade_invocations
     textPainter.paint(canvas, position);
   }
 

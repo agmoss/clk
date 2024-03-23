@@ -1,7 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
 import 'package:shared_preferences/shared_preferences.dart';
 
+// Project imports:
 import 'theme.dart';
 
 class ThemeModel extends ChangeNotifier {
@@ -91,13 +94,13 @@ class ThemeModel extends ChangeNotifier {
     required ColorScheme colorScheme,
     required String themePrefix,
   }) {
-    int primaryColor =
+    final int primaryColor =
         prefs.getInt('${themePrefix}Primary') ?? colorScheme.primary.value;
-    int secondaryColor =
+    final int secondaryColor =
         prefs.getInt('${themePrefix}Secondary') ?? colorScheme.secondary.value;
-    int tertiaryColor =
+    final int tertiaryColor =
         prefs.getInt('${themePrefix}Tertiary') ?? colorScheme.tertiary.value;
-    int outlineColor =
+    final int outlineColor =
         prefs.getInt('${themePrefix}Outline') ?? colorScheme.outline.value;
 
     return colorScheme.copyWith(
@@ -107,7 +110,7 @@ class ThemeModel extends ChangeNotifier {
         outline: Color(outlineColor));
   }
 
-  void _saveColorToPrefs(String key, Color color) async {
+  Future<void> _saveColorToPrefs(String key, Color color) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt(key, color.value);
   }

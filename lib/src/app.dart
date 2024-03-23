@@ -1,9 +1,13 @@
-import 'package:clk/src/routes/routes.dart';
-import 'package:clk/src/theme/theme_model.dart';
-
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
+
+// Project imports:
+import 'package:clk/src/routes/routes.dart';
+import 'package:clk/src/theme/theme_model.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);

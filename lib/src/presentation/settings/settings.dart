@@ -1,8 +1,12 @@
-import 'package:clk/src/theme/theme_model.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:provider/provider.dart';
 
+// Project imports:
+import 'package:clk/src/theme/theme_model.dart';
 import 'settings_layout.dart';
 
 class Settings extends StatefulWidget {

@@ -1,4 +1,7 @@
+// Dart imports:
 import 'dart:math';
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 enum HandType { hour, minute, second, gmt }
@@ -45,7 +48,7 @@ class ClockMath {
   double secondDegree(DateTime now) => 360 / 60 * now.second;
 
   double gmtDegree(DateTime now) {
-    DateTime utcNow = now.toUtc();
+    final DateTime utcNow = now.toUtc();
     return 360 / 24 * (utcNow.hour + utcNow.minute / 60 + utcNow.second / 3600);
   }
 }

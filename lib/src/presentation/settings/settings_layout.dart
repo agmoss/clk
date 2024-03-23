@@ -1,6 +1,9 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:clk/src/routes/routes.dart';
 import 'package:clk/src/theme/theme.dart';
-import 'package:flutter/material.dart';
 
 class SettingLayout extends StatelessWidget {
   final Widget content;
